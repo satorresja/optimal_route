@@ -16,13 +16,20 @@ class ClusterVisualizer:
         # Add points to the map
         for index, row in self.data.iterrows():
             if row['cluster'] != -1:
+                # Determinar el mensaje del popup basado en si hay un orden optimizado o no
+                if 'optimized_order' in row and not pd.isna(row['optimized_order']):
+                    popup_msg = f"Cluster: {row['cluster']}, Order: {row['optimized_order']}"
+                else:
+                    popup_msg = f"Cluster: {row['cluster']}"
+                
+                # Crear el marcador en el mapa
                 folium.CircleMarker(
                     location=(row['LATITUD'], row['LONGITUD']),
                     radius=5,
-                    popup=f"Cluster: {row['cluster']}, Order: {row['optimized_order']}",
+                    popup=popup_msg,
                     fill=True,
                     color=colors[int(row['cluster']) % len(colors)],
-                    fill_color=colors[int(row['cluster']) % len(colors)],
+                    fill_color=colors[int(row['cluster']) % len(colors)]
                 ).add_to(m)
         
         m.save(output_html)

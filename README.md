@@ -68,3 +68,33 @@ Seguridad de Datos: Las credenciales de la base de datos y otros detalles sensib
 
 Conclusión
 La optimización de rutas basada en la clusterización es una herramienta poderosa para mejorar la eficiencia en logística y servicios. Al combinar técnicas de análisis espacial con algoritmos de optimización, es posible proporcionar soluciones prácticas y efectivas a desafíos del mundo real. Sin embargo, como con cualquier herramienta analítica, es esencial comprender sus limitaciones y asegurarse de que las soluciones propuestas sean viables en el contexto operativo.
+
+# Evaluación de Clústeres mediante Métricas
+El proceso de clusterización consiste en agrupar puntos de datos en clústeres de tal manera que los puntos en el mismo clúster sean más similares entre sí que con los puntos en otros clústeres. Para evaluar la calidad de estos clústeres, se utilizan diversas métricas. A continuación, te presento una descripción detallada de las métricas que hemos utilizado:
+
+1. Silhouette Score:
+Definición: El coeficiente de silueta mide qué tan cerca está cada punto de un clúster a los puntos en los clústeres vecinos. Los valores varían entre -1 y 1. Un valor alto indica que el objeto está bien emparejado con su propio clúster y mal emparejado con los clústeres vecinos.
+
+Interpretación:
+
+Valores cercanos a 1 indican que los puntos están lejos de los clústeres vecinos.
+Un valor de 0 indica que los puntos están muy cerca de la decisión de límite entre dos clústeres vecinos.
+Valores negativos indican que esos puntos podrían haberse asignado al clúster incorrecto.
+Por qué es importante: Ayuda a determinar la distancia entre el clúster resultante y el clúster vecino, es decir, qué tan bien están definidos los clústeres.
+
+2. Calinski Harabasz Score:
+Definición: También conocido como el índice de varianza. Es el cociente entre la dispersión entre clústeres y la dispersión dentro del clúster. El score es mayor cuando los clústeres están densos y bien separados.
+
+Interpretación:
+
+Valores más altos indican una mejor definición de clúster.
+Por qué es importante: Este score nos da una idea de la densidad y separación de los clústeres formados. Un score más alto es mejor, ya que indica que los clústeres están bien separados entre sí y los puntos dentro de un clúster están cerca entre sí.
+
+3. Davies Bouldin Score:
+Definición: Es el promedio de las similitudes entre cada clúster y su clúster más similar, donde la similitud es la relación entre las distancias dentro del clúster y las distancias entre clústeres.
+
+Interpretación:
+
+Valores más bajos indican una mejor separación entre clústeres.
+Por qué es importante: El score Davies-Bouldin nos indica la similitud entre un clúster y su clúster más similar. Un valor bajo es deseable, ya que indica que los clústeres están más separados y, por lo tanto, están mejor definidos.
+
